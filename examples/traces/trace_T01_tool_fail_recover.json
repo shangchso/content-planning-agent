@@ -1,0 +1,97 @@
+{
+  "task_id": "T01",
+  "review_status": "completed",
+  "selected_plan": "standard",
+  "plan_display_name": "标准替代方案",
+  "step_status": {
+    "material_search": "success",
+    "script_generator": "success"
+  },
+  "total_cost": 8,
+  "total_duration": 4,
+  "plan_saved": true,
+  "duplicated_execution": false,
+  "replan_count": 1,
+  "unfinished_reason": "",
+  "steps_used": 8,
+  "llm_name": "MockLLM",
+  "trace": [
+    {
+      "step": 1,
+      "action": "material_search",
+      "tool_arguments": {
+        "theme": "秋季新品活动",
+        "plan": "premium"
+      },
+      "observation_summary": "material_search 返回：{'material_count': 2, 'step_cost': 4}",
+      "decision_rationale": "方案执行第一步，检索活动素材"
+    },
+    {
+      "step": 2,
+      "action": "script_generator",
+      "tool_arguments": {
+        "task_id": "T01",
+        "plan": "premium"
+      },
+      "observation_summary": "script_generator 返回失败：脚本生成工具执行失败",
+      "decision_rationale": "素材已就绪，生成活动脚本"
+    },
+    {
+      "step": 3,
+      "action": "switch_plan",
+      "tool_arguments": {
+        "from": "premium",
+        "to": "standard",
+        "reason": "脚本生成工具执行失败"
+      },
+      "observation_summary": "switch_plan 状态更新完成",
+      "decision_rationale": "工具执行失败（脚本生成工具执行失败），重规划切换到替代方案 standard，保留已成功步骤结果"
+    },
+    {
+      "step": 4,
+      "action": "reuse_step",
+      "tool_arguments": {
+        "tool": "material_search"
+      },
+      "observation_summary": "reuse_step 状态更新完成",
+      "decision_rationale": "步骤 material_search 已成功完成，保留其结果并直接进入下一步"
+    },
+    {
+      "step": 5,
+      "action": "script_generator",
+      "tool_arguments": {
+        "task_id": "T01",
+        "plan": "standard"
+      },
+      "observation_summary": "script_generator 返回：{'script_summary': \"基于 2 个素材生成《秋季新品活动》活动脚本，引用素材：['新品发布会宣传片素材', '产品细节展示图集']\", 'step_cost': 5}",
+      "decision_rationale": "素材已就绪，生成活动脚本"
+    },
+    {
+      "step": 6,
+      "action": "estimate_cost",
+      "tool_arguments": {
+        "task_id": "T01",
+        "plan": "standard"
+      },
+      "observation_summary": "estimate_cost 返回：{'total_cost': 8, 'total_duration': 4, 'within_budget': True, 'budget_gap': 2}",
+      "decision_rationale": "步骤已完成，估算方案总成本并与预算对比"
+    },
+    {
+      "step": 7,
+      "action": "save_plan",
+      "tool_arguments": {
+        "task_id": "T01",
+        "plan": "standard"
+      },
+      "observation_summary": "save_plan 返回：{'duplicated': False, 'message': '方案保存成功'}",
+      "decision_rationale": "方案成本 8 在预算 10 内，保存方案"
+    },
+    {
+      "step": 8,
+      "action": "finish",
+      "tool_arguments": {},
+      "observation_summary": "终结动作：方案已保存，任务完成",
+      "decision_rationale": "方案已保存，任务完成"
+    }
+  ]
+}

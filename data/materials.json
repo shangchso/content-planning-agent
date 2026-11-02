@@ -1,0 +1,22 @@
+{
+  "materials": [
+    {
+      "material_id": "ASSET01",
+      "theme": "秋季新品活动",
+      "title": "新品发布会宣传片素材",
+      "available": true
+    },
+    {
+      "material_id": "ASSET02",
+      "theme": "秋季新品活动",
+      "title": "产品细节展示图集",
+      "available": true
+    },
+    {
+      "material_id": "ASSET03",
+      "theme": "重复执行测试任务",
+      "title": "通用活动文案素材",
+      "available": true
+    }
+  ]
+}

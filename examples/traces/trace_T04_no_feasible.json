@@ -1,0 +1,98 @@
+{
+  "task_id": "T04",
+  "review_status": "blocked",
+  "selected_plan": "standard",
+  "plan_display_name": "标准替代方案",
+  "step_status": {
+    "material_search": "success",
+    "script_generator": "success"
+  },
+  "total_cost": 8,
+  "total_duration": 4,
+  "plan_saved": false,
+  "duplicated_execution": false,
+  "replan_count": 1,
+  "unfinished_reason": "所有方案均超预算，最小成本 8，预算缺口 3",
+  "steps_used": 8,
+  "llm_name": "MockLLM",
+  "trace": [
+    {
+      "step": 1,
+      "action": "material_search",
+      "tool_arguments": {
+        "theme": "预算不足任务",
+        "plan": "premium"
+      },
+      "observation_summary": "material_search 返回：{'material_count': 0}",
+      "decision_rationale": "方案执行第一步，检索活动素材"
+    },
+    {
+      "step": 2,
+      "action": "script_generator",
+      "tool_arguments": {
+        "task_id": "T04",
+        "plan": "premium"
+      },
+      "observation_summary": "script_generator 返回：{}",
+      "decision_rationale": "素材已就绪，生成活动脚本"
+    },
+    {
+      "step": 3,
+      "action": "estimate_cost",
+      "tool_arguments": {
+        "task_id": "T04",
+        "plan": "premium"
+      },
+      "observation_summary": "estimate_cost 返回：{'total_cost': 12, 'total_duration': 5, 'within_budget': False, 'budget_gap': -7}",
+      "decision_rationale": "步骤已完成，估算方案总成本并与预算对比"
+    },
+    {
+      "step": 4,
+      "action": "switch_plan",
+      "tool_arguments": {
+        "from": "premium",
+        "to": "standard"
+      },
+      "observation_summary": "switch_plan 状态更新完成",
+      "decision_rationale": "当前方案总成本 12 超过预算 5，重规划切换到替代方案 standard，并保留已成功步骤结果"
+    },
+    {
+      "step": 5,
+      "action": "reuse_step",
+      "tool_arguments": {
+        "tool": "material_search"
+      },
+      "observation_summary": "reuse_step 状态更新完成",
+      "decision_rationale": "步骤 material_search 已成功完成，保留其结果并直接进入下一步"
+    },
+    {
+      "step": 6,
+      "action": "script_generator",
+      "tool_arguments": {
+        "task_id": "T04",
+        "plan": "standard"
+      },
+      "observation_summary": "script_generator 返回：{}",
+      "decision_rationale": "素材已就绪，生成活动脚本"
+    },
+    {
+      "step": 7,
+      "action": "estimate_cost",
+      "tool_arguments": {
+        "task_id": "T04",
+        "plan": "standard"
+      },
+      "observation_summary": "estimate_cost 返回：{'total_cost': 8, 'total_duration': 4, 'within_budget': False, 'budget_gap': -3}",
+      "decision_rationale": "步骤已完成，估算方案总成本并与预算对比"
+    },
+    {
+      "step": 8,
+      "action": "block",
+      "tool_arguments": {
+        "reason": "所有方案均超预算，最小成本 8，预算缺口 3"
+      },
+      "observation_summary": "终结动作：没有可行方案，返回未完成及缺口",
+      "decision_rationale": "没有可行方案，返回未完成及缺口"
+    }
+  ]
+}

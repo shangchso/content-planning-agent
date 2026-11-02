@@ -1,0 +1,27 @@
+{
+  "plan_order": ["premium", "standard"],
+  "plan_steps": {
+    "premium": ["material_search", "script_generator"],
+    "standard": ["material_search", "script_generator"]
+  },
+  "plan_display_name": {
+    "premium": "高端方案",
+    "standard": "标准替代方案"
+  },
+  "tools": {
+    "material_search": {
+      "display_name": "素材检索",
+      "plans": {
+        "premium": {"cost": 4, "duration": 2},
+        "standard": {"cost": 3, "duration": 2}
+      }
+    },
+    "script_generator": {
+      "display_name": "脚本生成",
+      "plans": {
+        "premium": {"cost": 8, "duration": 3},
+        "standard": {"cost": 5, "duration": 2}
+      }
+    }
+  }
+}

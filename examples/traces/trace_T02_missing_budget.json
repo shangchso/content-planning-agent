@@ -1,0 +1,29 @@
+{
+  "task_id": "T02",
+  "review_status": "blocked",
+  "selected_plan": "premium",
+  "plan_display_name": "高端方案",
+  "step_status": {
+    "material_search": "not_executed",
+    "script_generator": "not_executed"
+  },
+  "total_cost": null,
+  "total_duration": null,
+  "plan_saved": false,
+  "duplicated_execution": false,
+  "replan_count": 0,
+  "unfinished_reason": "缺少必要输入：['budget']",
+  "steps_used": 1,
+  "llm_name": "MockLLM",
+  "trace": [
+    {
+      "step": 1,
+      "action": "block",
+      "tool_arguments": {
+        "reason": "缺少必要输入：['budget']"
+      },
+      "observation_summary": "终结动作：预算或截止时间缺失，不具备方案规划条件",
+      "decision_rationale": "预算或截止时间缺失，不具备方案规划条件"
+    }
+  ]
+}

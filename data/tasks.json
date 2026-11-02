@@ -1,0 +1,34 @@
+{
+  "tasks": [
+    {
+      "task_id": "T01",
+      "theme": "秋季新品活动",
+      "budget": 10,
+      "deadline": "14:00"
+    },
+    {
+      "task_id": "T02",
+      "theme": "缺预算任务",
+      "budget": null,
+      "deadline": "14:00"
+    },
+    {
+      "task_id": "T03",
+      "theme": "缺截止时间任务",
+      "budget": 10,
+      "deadline": null
+    },
+    {
+      "task_id": "T04",
+      "theme": "预算不足任务",
+      "budget": 5,
+      "deadline": "14:00"
+    },
+    {
+      "task_id": "T05",
+      "theme": "重复执行测试任务",
+      "budget": 10,
+      "deadline": "14:00"
+    }
+  ]
+}

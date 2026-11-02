@@ -1,0 +1,106 @@
+{
+  "task_id": "T05",
+  "review_status": "completed",
+  "selected_plan": "standard",
+  "plan_display_name": "标准替代方案",
+  "step_status": {
+    "material_search": "success",
+    "script_generator": "success"
+  },
+  "total_cost": 8,
+  "total_duration": 4,
+  "plan_saved": true,
+  "duplicated_execution": true,
+  "replan_count": 1,
+  "unfinished_reason": "",
+  "steps_used": 9,
+  "llm_name": "MockLLM",
+  "trace": [
+    {
+      "step": 1,
+      "action": "material_search",
+      "tool_arguments": {
+        "theme": "重复执行测试任务",
+        "plan": "premium"
+      },
+      "observation_summary": "material_search 返回：{'material_count': 1, 'step_cost': 4}",
+      "decision_rationale": "方案执行第一步，检索活动素材"
+    },
+    {
+      "step": 2,
+      "action": "script_generator",
+      "tool_arguments": {
+        "task_id": "T05",
+        "plan": "premium"
+      },
+      "observation_summary": "script_generator 返回：{'script_summary': \"基于 1 个素材生成《重复执行测试任务》活动脚本，引用素材：['通用活动文案素材']\", 'step_cost': 8}",
+      "decision_rationale": "素材已就绪，生成活动脚本"
+    },
+    {
+      "step": 3,
+      "action": "estimate_cost",
+      "tool_arguments": {
+        "task_id": "T05",
+        "plan": "premium"
+      },
+      "observation_summary": "estimate_cost 返回：{'total_cost': 12, 'total_duration': 5, 'within_budget': False, 'budget_gap': -2}",
+      "decision_rationale": "步骤已完成，估算方案总成本并与预算对比"
+    },
+    {
+      "step": 4,
+      "action": "switch_plan",
+      "tool_arguments": {
+        "from": "premium",
+        "to": "standard"
+      },
+      "observation_summary": "switch_plan 状态更新完成",
+      "decision_rationale": "当前方案总成本 12 超过预算 10，重规划切换到替代方案 standard，并保留已成功步骤结果"
+    },
+    {
+      "step": 5,
+      "action": "reuse_step",
+      "tool_arguments": {
+        "tool": "material_search"
+      },
+      "observation_summary": "reuse_step 状态更新完成",
+      "decision_rationale": "步骤 material_search 已成功完成，保留其结果并直接进入下一步"
+    },
+    {
+      "step": 6,
+      "action": "script_generator",
+      "tool_arguments": {
+        "task_id": "T05",
+        "plan": "standard"
+      },
+      "observation_summary": "script_generator 返回：{'script_summary': \"基于 1 个素材生成《重复执行测试任务》活动脚本，引用素材：['通用活动文案素材']\", 'step_cost': 5}",
+      "decision_rationale": "素材已就绪，生成活动脚本"
+    },
+    {
+      "step": 7,
+      "action": "estimate_cost",
+      "tool_arguments": {
+        "task_id": "T05",
+        "plan": "standard"
+      },
+      "observation_summary": "estimate_cost 返回：{'total_cost': 8, 'total_duration': 4, 'within_budget': True, 'budget_gap': 2}",
+      "decision_rationale": "步骤已完成，估算方案总成本并与预算对比"
+    },
+    {
+      "step": 8,
+      "action": "save_plan",
+      "tool_arguments": {
+        "task_id": "T05",
+        "plan": "standard"
+      },
+      "observation_summary": "save_plan 返回：{'duplicated': True, 'message': '该任务已保存方案，重复执行未产生新方案'}",
+      "decision_rationale": "方案成本 8 在预算 10 内，保存方案"
+    },
+    {
+      "step": 9,
+      "action": "finish",
+      "tool_arguments": {},
+      "observation_summary": "终结动作：方案已保存，任务完成",
+      "decision_rationale": "方案已保存，任务完成"
+    }
+  ]
+}
